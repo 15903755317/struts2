@@ -1,0 +1,68 @@
+第一步 在打开DOS窗口，输入命令1，进入目录 mysqlbin，如图：
+
+第二步 输入命令：“mysql -u用户名 －p”，如图：
+
+第三步 输入密码（之前设置的4位以上的密码）进入MySQL，如图：
+
+第四步 输入命令：“use test”，如图：打开数据库库。
+
+第五步 使用“show databases；”，如图：命令显示数据库列表。
+
+基本命令：
+1、修改密码
+
+mysqladmin -u用户名 -p旧密码 password 新密码
+
+例：将root的密码改1212为123456。
+
+mysqladmin -uroot -p1212 password 123456
+
+2、增加新用户
+
+grant select on 数据库.* to 用户名@登录主机identified by “密码”
+
+3．显示数据库列表。
+
+show databases;
+
+4．显示库中的数据表：
+
+use mysql；
+
+show tables;
+
+5．显示数据表的结构：
+
+describe 表名；
+
+6．建库：
+
+create database 库名；
+
+7．建表：
+
+use 库名；
+
+create table 表名 (字段设定列表)；
+
+8．删库和删表：
+
+drop database 库名；
+
+drop table 表名；
+
+9、将表中记录清空：
+
+delete from 表名；
+
+10．显示表中的记录：
+
+select * from 表名；
+
+11、显示最后一个执行的语句所产生的错误、警告和通知：
+
+show warnings;
+
+12．只显示最后一个执行语句所产生的错误：
+
+show errors;

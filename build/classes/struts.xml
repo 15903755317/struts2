@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="20000000"></constant>
+	<!-- 配置全局信息文件 -->
+	<!-- 读取 src下 messages_语言_国家.properties -->
+	<constant name="struts.custom.i18n.resources" value="messages"></constant>
+
+	<package name="basic" extends="struts-default">
+	<action name="upload" class="it.jsw.struts2.UploadAction">
+	<!-- 上传错误页面 -->
+		<result name="input">/demo1/upload.jsp</result>
+		<interceptor-ref name="defaultStack">
+			<param name="fileUpload.allowedExtensions">.txt,.mp3,.pptx</param>
+			<param name="fileUpload.maximumSize">4000000</param>
+		</interceptor-ref>
+	</action>
+	
+	<action name="mutiupload" class="it.jsw.struts2.MutiUploadAction"></action>
+	
+	<action name="download" class="it.jsw.struts2.demo2.DownLoad">
+		<result type="stream">
+		<!-- 使用默认流名称inputStream -->
+		<!-- 根据文件名获取MIME类型 ,Action中提供getContentType方法-->
+		<param name="contentType">${contentType}</param>
+		
+		<!-- 解决下载附件名 -->
+		<param name="contentDisposition">attachment;filename=${filename}</param>
+		</result>
+	
+	</action>
+	</package>
+
+</struts>
